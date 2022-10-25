@@ -109,7 +109,7 @@ jobs:
         # needs: [dependencies] # Wait until this job was finished.
         if: ${{ inputs.data_prep }}
         # The type of runner that the job will run on
-        runs-on: ubuntu-22.04
+        runs-on: ubuntu-20.04
 
         env:
             DATA_FOLDER: data
@@ -141,7 +141,7 @@ jobs:
         needs: [data-preparing]
         # This will run Always BUT only when the previous job was successful or skipped && the ai_Training flag is set to true.
         if: ${{ always() && (needs.data-preparing.result == 'success' || needs.data-preparing.result == 'skipped') && inputs.ai_training }}
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-20.04
 
         env:
             INITIAL_LEARNING_RATE: 0.01
@@ -184,7 +184,7 @@ jobs:
         needs: [data-preparing, ai-training]
         # This will run Always BUT only when the previous two jobs were successful or skipped && the api_creation flag is set to true.
         if: ${{ always() && (needs.data-preparing.result == 'success' || needs.data-preparing.result == 'skipped') && (needs.ai-training.result == 'success' || needs.ai-training.result == 'skipped') && inputs.api_creation }}
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-20.04
 
         env:
             DEPLOYMENT_DEPENDENCIES: deployment_environment.yml
@@ -221,7 +221,7 @@ jobs:
         needs: [api-creation]
         # This will run Always BUT only when the previous two jobs were successful or skipped && the local_deployment flag is set to true.
         if: ${{ always() && (needs.api-creation.result == 'success' || needs.api-creation.result == 'skipped') && inputs.local_deployment }}
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-20.04
 
         steps:
             - name: Download docker-config artifact
