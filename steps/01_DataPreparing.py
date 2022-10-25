@@ -28,7 +28,7 @@ def processAndUploadAnimalImages(datasets, data_path, processed_path, ws, animal
 
     # We can't use mount on these machines, so we'll have to download them
 
-    animal_path = os.path.join(data_path, 'animals', animal_name+'_v1')
+    animal_path = os.path.join(data_path, 'animals', animal_name)
 
     # Get the dataset name for this animal, then download to the directory
     datasets[animal_name].download(animal_path, overwrite=True) # Overwriting means we don't have to delete if they already exist, in case something goes wrong.
