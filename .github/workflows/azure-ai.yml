@@ -91,7 +91,7 @@ env:
     RESOURCE_GROUP: ${{ secrets.RESOURCE_GROUP }} # Change this !
     SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }} # Change this !
 
-    ANIMALS: cats_v1,dogs_v1,pandas_v1 # As we have three classes, let's just defined them here. This way we can easily loop over them later.
+    ANIMALS: cats,dogs,pandas # As we have three classes, let's just defined them here. This way we can easily loop over them later.
     TRAIN_SET_NAME: animals-training-set
     TEST_SET_NAME: animals-testing-set
     MODEL_NAME: animal-cnn
